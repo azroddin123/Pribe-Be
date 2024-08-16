@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F8F8FF;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+            padding: 20px;
+            justify-content: center;
+            text-align: justify;
+
+        }
+
+        .container {
+            background-color: #F8F8FF;
+            margin: 50px auto;
+            /* padding: 20px; */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            color: #000000;
+        }
+
+        .header-section {
+            display: flex;
+            padding: 20px;
+            padding-top: 35px;
+            box-shadow: 15px 15px 15px  rgba(0, 0, 0, 0.3); 
+        }
+
+        /* 
+        .header {
+            background-color: 
+            color: #F8F8FF;
+            padding: 20px;
+            border-radius: 10px 10px 10px 10px;
+            text-align: center;
+            font-size: 33px;
+            align-items: center;
+            box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.3);
+        } */
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            flex: 0 0 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            box-shadow: 15px 15px 15px 2px  rgba(0, 0, 0, 0.3);
+        }
+        .title {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 20px;
+            border-top: 1px solid #ffffff;
+            margin-top: 15px;
+            background-color: #ea4343;
+            font-weight: bolder;
+            padding: 20px 0;
+            height: 25px;
+            width: 100%;
+            box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.3);
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+
+        .content {
+            padding: 20px;
+            padding-left: 50px;
+            font-size: 16px;
+            color: #000000;
+            justify-content: center !important;
+        }
+
+        .otp {
+            color: #ea4343;
+            font-size: 24px;
+            font-style: bold;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .footer {
+            text-align: center;
+            color: #ffffff;
+            font-size: 16px;
+            border-top: 1px solid #ffffff;
+            margin-top: 20px;
+            background-color: #1D2127;
+            padding: 25px 0;
+        }
+
+        @media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 0px;
+    }
+
+    .header-section {
+        padding: 15px;
+        padding-top: 20px;
+        box-shadow: none;
+    }
+
+    .logo {
+        width: 50px;
+        height: 60px;
+        box-shadow: none;
+        margin: 0;
+    }
+
+    .title {
+        /* font-size: 13px;
+        padding: 15px 0;
+        box-shadow: none;
+        margin-top: 1px; */
+        font-size: 12px;
+        padding: 15px 1px;
+        box-shadow: none;
+        margin-top: 9px;
+        height: 12px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .content {
+        padding: 15px;
+        padding-left: 20px;
+        font-size: 12px;
+       
+    }
+
+    .otp {
+        font-size: 20px;
+        margin: 15px 0;
+    }
+
+    img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .footer {
+        font-size: 14px;
+        padding: 20px 0;
+    }
+}
+    </style>
+    <title>Pride Motors OTP Verification</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header-section">
+            <div class="logo"><img src="https://vectosense.com:8000/media/company/pm-logo.png" alt="Pride-Motors"
+                    height="75px" width="100px"></div>
+            <div class="title">Pride-Motors OTP Verification Email</div>
+        </div>
+        <div class="content">
+            <p><b>Hello {{username}}, </b></p>
+            <p>Congratulations! Your registration with Pride Motors has been successful. We're thrilled to have you on
+                board and can't wait to help you grow your business with our powerful tools and services.</p>
+            <p>To verify your email address, please use the following OTP</p>
+            <div class="otp">
+                <b>Your OTP: {{ otp }}</b>
+            </div>  
+            <br>
+            To get started, please visit your dashboard by clicking the button below:
+            <p style="color:#ea4343"><u><b>Go to Home Page </b></u></b></p>
+
+            <p>If you have any questions, feel free to reach out to our support team at any time.</p>
+            <p>Best regards,<br>
+                The Pride Motors Team</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Pride Motors. All rights reserved.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
