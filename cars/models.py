@@ -1,6 +1,8 @@
 from django.db import models
 from accounts.models import User
 from portals.models import BaseModel
+
+
 class Brand(BaseModel):
     name        = models.CharField(max_length=50)
     description = models.TextField(blank=True, null=True)
@@ -50,6 +52,8 @@ class CarImage(BaseModel):
     car_image = models.ImageField(upload_to="car_images")
 
 class Review(BaseModel):
+    car         = models.ForeignKey(Car,on_delete=models.CASCADE)
+    user        = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     name        = models.CharField(max_length=128,null=True,blank=True)
     email       = models.CharField(max_length=128,null=True,blank=True)
     review_text = models.TextField()
