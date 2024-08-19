@@ -8,7 +8,6 @@ class Brand(BaseModel):
     def __str__(self):
         return self.name
 
-
 class Car(BaseModel):
     user                = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     make                = models.CharField(max_length=128)
@@ -49,3 +48,11 @@ class Car(BaseModel):
 class CarImage(BaseModel):
     car = models.ForeignKey(Car,on_delete=models.CASCADE)
     car_image = models.ImageField(upload_to="car_images")
+
+class Review(BaseModel):
+    name        = models.CharField(max_length=128,null=True,blank=True)
+    email       = models.CharField(max_length=128,null=True,blank=True)
+    review_text = models.TextField()
+    image       = models.ImageField(upload_to="upload_to",null=True,blank=True)
+    rating      = models.PositiveIntegerField(default=0)
+    

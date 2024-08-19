@@ -5,8 +5,8 @@ from portals.GM2 import GenericMethodsMixin
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
-from .models import Car,Brand,CarImage
-from .serializers import CarSerializer,BrandSerializer,CarImageSerializer
+from .models import Car,Brand,CarImage,Review
+from .serializers import CarSerializer,BrandSerializer,CarImageSerializer,ReviewSerializer
 from django.db import transaction
 
 class BrandAPI(GenericMethodsMixin,APIView):
@@ -50,8 +50,16 @@ class CarAPI(GenericMethodsMixin,APIView):
             except Exception as e :
                 return Response({"error" : True , "message" : str(e)},status=status.HTTP_400_BAD_REQUEST)
 
-
 class CarImagesAPI(GenericMethodsMixin,APIView):
     model = CarImage
     serializer_class = CarImageSerializer
     lookup_field = "id"
+
+class ReviewsAPI(GenericMethodsMixin,APIView):
+    model = Review
+    serializer_class = ReviewSerializer
+    lookup_field = "id"
+
+
+
+    
