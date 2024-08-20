@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from .models import Car,Brand,CarImage,Review
-from .serializers import CarSerializer,BrandSerializer,CarImageSerializer,ReviewSerializer
+from .serializers import CarSerializer,BrandSerializer,CarImageSerializer,ReviewSerializer,CarDetailSerializer
 from django.db import transaction
 
 class BrandAPI(GenericMethodsMixin,APIView):
@@ -61,5 +61,8 @@ class ReviewsAPI(GenericMethodsMixin,APIView):
     lookup_field = "id"
 
 
-
+class CarDetailsAPI(GenericMethodsMixin,APIView):
+    model = Car
+    serializer_class = CarDetailSerializer
+    lookup_field = "id"
     

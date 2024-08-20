@@ -14,6 +14,9 @@ path('car-images',CarImagesAPI.as_view()),
 path('car-images/<str:pk>',CarImagesAPI.as_view()),
 
 path('review',ReviewsAPI.as_view()),
-path('review/<str:pk>',ReviewsAPI.as_view())
+path('review/<str:pk>',ReviewsAPI.as_view()),
 
+
+path('car-detail1',CarDetailsAPI.as_view()),
+path('car-detail1/<str:pk>',CarDetailsAPI.as_view()),
 ]

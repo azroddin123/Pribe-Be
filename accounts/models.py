@@ -26,7 +26,6 @@ class User(AbstractBaseUser):
     status           = models.BooleanField(default=False)
     created_on       = models.DateTimeField(auto_now_add=True,editable=False)
     updated_on       = models.DateTimeField(auto_now=True)
-   
     
     USERNAME_FIELD = 'email'
     def __str__(self):
