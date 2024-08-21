@@ -51,12 +51,12 @@ class Car(BaseModel):
 
 
 class CarImage(BaseModel):
-    car = models.ForeignKey(Car,on_delete=models.CASCADE)
+    car = models.ForeignKey(Car,related_name="car_image",on_delete=models.CASCADE)
     car_image = models.ImageField(upload_to="car_images")
 
 
 class Review(BaseModel):
-    car         = models.ForeignKey(Car,on_delete=models.CASCADE)
+    car         = models.ForeignKey(Car,related_name="reviews",on_delete=models.CASCADE)
     user        = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     name        = models.CharField(max_length=128,null=True,blank=True)
     email       = models.CharField(max_length=128,null=True,blank=True)
