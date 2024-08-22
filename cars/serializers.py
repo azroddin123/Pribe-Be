@@ -1,4 +1,4 @@
-from .models import Car,Brand,CarImage,Review
+from .models import Car,Brand,CarImage,Review,TestDrive
 from rest_framework.serializers import ModelSerializer
 
 from rest_framework import serializers
@@ -54,13 +54,11 @@ class CarDetailSerializer(ModelSerializer):
         if obj.car_model:
             return obj.car_model.name
         return None
+
+
+class TDSerializer(ModelSerializer):
+    class Meta :
+        model = TestDrive
+        fields ="__all__"
+    
         
-'''
-Integrate login register api with zaheer for pride motors 
-
-Pride motors appointment booking section 
-
-
-user register 
-
-'''

@@ -68,7 +68,8 @@ INSTALLED_APPS = [
 #  Custom Apps
     'accounts',
     'portals',
-    'cars'
+    'cars',
+    'bookings'
 ]
 
 MIDDLEWARE = [
