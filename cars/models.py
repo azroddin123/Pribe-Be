@@ -22,6 +22,9 @@ class Car(BaseModel):
     mileage             = models.DecimalField(max_digits=10, decimal_places=2)
     make_year           = models.PositiveIntegerField()
     
+    body_structure_damage = models.CharField(max_length=128,null=True,blank=True)
+    flooded_body          = models.CharField(max_length=128,null=True,blank=True)
+    
     price               = models.DecimalField(max_digits=10, decimal_places=2)
     ownership           = models.CharField(max_length=128)
     registration_location = models.CharField(max_length=128)
@@ -49,11 +52,9 @@ class Car(BaseModel):
     contact_no          = models.CharField(max_length=128)
     location            = models.CharField(max_length=128)
 
-
 class CarImage(BaseModel):
-    car = models.ForeignKey(Car,related_name="car_image",on_delete=models.CASCADE)
-    car_image = models.ImageField(upload_to="car_images")
-
+    car               = models.ForeignKey(Car,related_name="car_image",on_delete=models.CASCADE)
+    car_image         = models.ImageField(upload_to="car_images")
 
 class Review(BaseModel):
     car         = models.ForeignKey(Car,related_name="reviews",on_delete=models.CASCADE)
@@ -63,7 +64,6 @@ class Review(BaseModel):
     review_text = models.TextField()
     image       = models.ImageField(upload_to="upload_to",null=True,blank=True)
     rating      = models.PositiveIntegerField(default=0)
-
 
 class TestDrive(BaseModel):
     car         = models.ForeignKey(Car,related_name="test_drive",on_delete=models.CASCADE,null=True,blank=True)

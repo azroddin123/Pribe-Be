@@ -4,10 +4,12 @@ INTERMEDIATE   = "Intermediate"
 PRO            = "Pro"
 
 # User Choices
+SERVICE_PROVIDER = "Service"
+NORMAL           = "Normal"
 ADMIN            = "Admin"
-SELLER           = "Seller"
-BUYER            = "Buyer"
-
+AGENT            = "Agent"
+CLIENT           = "Client"
+SUPERADMIN       = "Superadmin"
 
 
 
