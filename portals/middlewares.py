@@ -4,7 +4,7 @@ from rest_framework import status
 import jwt
 from accounts.models import User
 from django.conf import settings
-from portals.permissions import IsBusinessOwner, IsAgent, IsClient
+# from portals.permissions import IsBusinessOwner, IsAgent, IsClient
 
 class CustomAuthentication:
     def __init__(self, get_response):

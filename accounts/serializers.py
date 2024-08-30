@@ -20,7 +20,7 @@ class UserSerializer(ModelSerializer):
 class UserSerializer2(ModelSerializer):
     class Meta:
         model     = User
-        fields    = ("id", "email", "username", "profile_pic", "mobile_number", "accepted_policy", "is_active", "user_role")
+        fields    = ("id", "email", "username", "profile_pic", "mobile_number", "accepted_policy", "is_active")
 
 class UserSerializer1(ModelSerializer):
     class Meta :

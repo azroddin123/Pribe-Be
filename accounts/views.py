@@ -20,8 +20,9 @@ class UserApi(GenericMethodsMixin,APIView):
 class UserProfileAPI(APIView):
     def get(self,request,*args,**kwargs):
         try :
+            print(request.thisUser,"iserrs")
             user_data = User.objects.get(id=request.thisUser.id)
-            if user_data.user_role == "Agent" :
+            if user_data : 
                 serializer = UserSerializer2(user_data)
             return Response({"error" : False, "data" : serializer.data},status=status.HTTP_200_OK)
         except Exception as e :
@@ -76,7 +77,7 @@ class VerifyOTPApi(APIView):
                 user.status = True
                 user.save()
                 token = generate_token(user.email)
-                return Response({"error": False, "message": "OTP verified successfully.","token" : token,"user_role" : user.user_role }, status=status.HTTP_200_OK)
+                return Response({"error": False, "message": "OTP verified successfully.","token" : token }, status=status.HTTP_200_OK)
             return Response({"error": True, "message": "Invalid OTP for email or SMS."}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e :
             return Response({"error" : True , "message" : str(e) ,"status_code" : 400},status=status.HTTP_400_BAD_REQUEST,)

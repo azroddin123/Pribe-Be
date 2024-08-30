@@ -18,7 +18,6 @@ class User(AbstractBaseUser):
     accepted_policy  = models.BooleanField(default=False)
 
     is_active        = models.BooleanField(default=True)
-    user_role        = models.CharField(choices=UserChoices.choices,max_length=50,default=UserChoices.ADMIN)
     objects          = UserManager()
     email_otp        = models.CharField(max_length=6,blank=True,null=True)
     sms_otp          = models.CharField(max_length=6,blank=True,null=True)
