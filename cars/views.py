@@ -5,8 +5,8 @@ from portals.GM2 import GenericMethodsMixin
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
-from .models import Car,Brand,CarImage,Review
-from .serializers import CarSerializer,BrandSerializer,CarImageSerializer,ReviewSerializer,CarDetailSerializer
+from .models import Car,Brand,CarImage,Review,Enquiry
+from .serializers import CarSerializer,BrandSerializer,CarImageSerializer,ReviewSerializer,CarDetailSerializer,EnquirySerializer
 from django.db import transaction
 
 class BrandAPI(GenericMethodsMixin,APIView):
@@ -60,9 +60,12 @@ class ReviewsAPI(GenericMethodsMixin,APIView):
     serializer_class = ReviewSerializer
     lookup_field = "id"
 
-
 class CarDetailsAPI(GenericMethodsMixin,APIView):
     model = Car
     serializer_class = CarDetailSerializer
     lookup_field = "id"
-    
+
+class EnquiryAPI(GenericMethodsMixin,APIView):
+    model = Enquiry
+    serializer_class = EnquirySerializer
+    lookup_field = "id"

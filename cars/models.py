@@ -71,4 +71,12 @@ class TestDrive(BaseModel):
     end_time    = models.CharField(max_length=128,null=True,blank=True)
     is_approved = models.BooleanField(default=False)
     
+
+class Enquiry(BaseModel):
+    first_name       = models.CharField(max_length=255,null=True,blank=True)
+    last_name        = models.CharField(max_length=255,null=True,blank=True)
+    email            = models.CharField(max_length=255,null=True,blank=True)
+    vehicle_interest = models.CharField(max_length=255,null=True,blank=True)
+    inquiry_type     = models.CharField(max_length=255,null=True,blank=True)
+    message          = models.TextField(null=True,blank=True)
     
