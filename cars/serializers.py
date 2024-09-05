@@ -46,7 +46,7 @@ class CarSerializer1(ModelSerializer):
 class CarSerializer2(ModelSerializer):
     class Meta :
         model = Car
-        fields = ["car_title","car_model","price","fuel_type","km_driven","image"]    
+        fields = ["car_title","car_model","price","fuel_type","km_driven","image","vehicle_name"]    
 
 class CarDetailSerializer(ModelSerializer):
     reviews   = ReviewSerializer1(many=True, read_only=True)
