@@ -20,12 +20,12 @@ class UserSerializer(ModelSerializer):
 class UserSerializer2(ModelSerializer):
     class Meta:
         model     = User
-        fields    = ("id", "email", "username", "profile_pic", "mobile_number", "accepted_policy", "is_active")
+        fields    = ("id", "email", "username", "profile_pic", "mobile_number", "accepted_policy", "is_active","is_admin")
 
 class UserSerializer1(ModelSerializer):
     class Meta :
         model   = User
-        exclude = ("last_login","created_on","updated_on","is_admin","password")
+        exclude = ("last_login","created_on","updated_on","password")
 
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
