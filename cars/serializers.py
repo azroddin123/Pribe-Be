@@ -43,7 +43,7 @@ class CarSerializer1(ModelSerializer):
         fields = ["car_title","car_model","price","fuel_type","km_driven","image"]
 
 
-class CarSerializer1(ModelSerializer):
+class CarSerializer2(ModelSerializer):
     class Meta :
         model = Car
         fields = ["car_title","car_model","price","fuel_type","km_driven","image"]    
