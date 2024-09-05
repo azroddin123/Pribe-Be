@@ -36,12 +36,10 @@ class ReviewSerializer1(serializers.ModelSerializer):
             return obj.user.username
         return None
 
-
 class CarSerializer1(ModelSerializer):
     class Meta :
         model = Car
         fields = ["car_title","car_model","price","fuel_type","km_driven","image"]
-
 
 class CarSerializer2(ModelSerializer):
     class Meta :
