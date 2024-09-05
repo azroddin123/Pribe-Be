@@ -20,7 +20,6 @@ class UserApi(GenericMethodsMixin,APIView):
 class UserProfileAPI(APIView):
     def get(self,request,*args,**kwargs):
         try :
-            print(request.thisUser,"iserrs")
             user_data = User.objects.get(id=request.thisUser.id)
             if user_data : 
                 serializer = UserSerializer2(user_data)
@@ -179,3 +178,5 @@ class ResetPasswordAPI(APIView):
 class PageNotFoundAPI(APIView):
     def get(self,request,*args, **kwargs):
         return Response({"error" : True, "message" : "This API Does not exists in this Application"},status=status.HTTP_404_NOT_FOUND)
+
+

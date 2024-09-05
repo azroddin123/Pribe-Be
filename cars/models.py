@@ -14,7 +14,7 @@ class Car(BaseModel):
     user                = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     make                = models.CharField(max_length=128,null=True,blank=True)
     car_title           = models.CharField(max_length=128,null=True,blank=True)
-    car_model           = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    car_model           = models.CharField(max_length=128,null=True,blank=True)
     variant             = models.CharField(max_length=128,null=True,blank=True)
     vin                 = models.CharField(max_length=128,null=True,blank=True)
     mileage             = models.DecimalField(max_digits=10, decimal_places=2,null=True,blank=True)
@@ -33,9 +33,9 @@ class Car(BaseModel):
     engine_capacity     = models.CharField(max_length=128,null=True,blank=True)
     transmission        = models.CharField(max_length=128,null=True,blank=True)
     
-    condition           = models.CharField(max_length=128,null=True,blank=True)
-    key_features        = models.CharField(max_length=128,null=True,blank=True)
-    convenience_feature = models.CharField(max_length=128,null=True,blank=True)
+    condition           = models.TextField(max_length=128,null=True,blank=True)
+    key_features        = models.TextField(max_length=128,null=True,blank=True)
+    convenience_feature = models.TextField(max_length=128,null=True,blank=True)
     km_driven           = models.PositiveIntegerField(null=True,blank=True)
     registry_year       = models.PositiveIntegerField(null=True,blank=True)
     registration_number = models.CharField(max_length=12,null=True,blank=True)
@@ -70,7 +70,6 @@ class TestDrive(BaseModel):
     start_time  = models.CharField(max_length=128,null=True,blank=True)
     end_time    = models.CharField(max_length=128,null=True,blank=True)
     is_approved = models.BooleanField(default=False)
-    
 
 class Enquiry(BaseModel):
     first_name       = models.CharField(max_length=255,null=True,blank=True)

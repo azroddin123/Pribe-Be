@@ -6,7 +6,6 @@ from cars.serializers import *
 from portals.GM2 import GenericMethodsMixin
 from accounts.models import * 
 from accounts.serializers import * 
-
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -39,4 +38,9 @@ class ReviewAPI(GenericMethodsMixin,APIView):
 class EnquiryAPI(GenericMethodsMixin,APIView):
     model = Enquiry
     serializer_class = EnquirySerializer
+    lookup_field = "id"
+
+class CarImagesAPI(GenericMethodsMixin,APIView):
+    model = CarImage
+    serializer_class = CarImageSerializer
     lookup_field = "id"

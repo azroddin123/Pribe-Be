@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from .models import Car,Brand,CarImage,Review,Enquiry
-from .serializers import CarSerializer,BrandSerializer,CarImageSerializer,ReviewSerializer,CarDetailSerializer,EnquirySerializer
+from .serializers import (CarSerializer,BrandSerializer,CarImageSerializer,ReviewSerializer,CarDetailSerializer,EnquirySerializer,CarSerializer1)
 from django.db import transaction
 
 class BrandAPI(GenericMethodsMixin,APIView):
@@ -50,6 +50,16 @@ class CarAPI(GenericMethodsMixin,APIView):
             except Exception as e :
                 return Response({"error" : True , "message" : str(e)},status=status.HTTP_400_BAD_REQUEST)
 
+
+
+
+class AddCarAPI(GenericMethodsMixin,APIView):
+    model = Car
+    serializer_class = CarSerializer1
+    lookup_field = "id"
+
+
+    
 class CarImagesAPI(GenericMethodsMixin,APIView):
     model = CarImage
     serializer_class = CarImageSerializer
@@ -69,3 +79,4 @@ class EnquiryAPI(GenericMethodsMixin,APIView):
     model = Enquiry
     serializer_class = EnquirySerializer
     lookup_field = "id"
+    

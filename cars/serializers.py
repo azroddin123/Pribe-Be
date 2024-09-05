@@ -36,6 +36,18 @@ class ReviewSerializer1(serializers.ModelSerializer):
             return obj.user.username
         return None
 
+
+class CarSerializer1(ModelSerializer):
+    class Meta :
+        model = Car
+        fields = ["car_title","car_model","price","fuel_type","km_driven","image"]
+
+
+class CarSerializer1(ModelSerializer):
+    class Meta :
+        model = Car
+        fields = ["car_title","car_model","price","fuel_type","km_driven","image"]    
+
 class CarDetailSerializer(ModelSerializer):
     reviews   = ReviewSerializer1(many=True, read_only=True)
     car_image = CarImageSerializer(many=True,read_only=True)
@@ -65,3 +77,5 @@ class EnquirySerializer(ModelSerializer):
     class Meta :
         model = Enquiry
         fields = "__all__"
+
+
