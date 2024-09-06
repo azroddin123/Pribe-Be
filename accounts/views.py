@@ -30,7 +30,6 @@ class UserProfileAPI(APIView):
 from django.db import transaction
 from portals.email_utility import send_email_async
 
-
 class RegisterUserApi(APIView):
     def post(self,request,*args, **kwargs):
         try : 
@@ -76,7 +75,7 @@ class VerifyOTPApi(APIView):
                 user.status = True
                 user.save()
                 token = generate_token(user.email)
-                return Response({"error": False, "message": "OTP verified successfully.","token" : token }, status=status.HTTP_200_OK)
+                return Response({"error": False, "message": "OTP verified successfully.","token" : token , "is_admin" : user.is_admin }, status=status.HTTP_200_OK)
             return Response({"error": True, "message": "Invalid OTP for email or SMS."}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e :
             return Response({"error" : True , "message" : str(e) ,"status_code" : 400},status=status.HTTP_400_BAD_REQUEST,)
