@@ -6,6 +6,8 @@ from accounts.models import User
 from django.conf import settings
 # from portals.permissions import IsBusinessOwner, IsAgent, IsClient
 
+
+
 class CustomAuthentication:
     def __init__(self, get_response):
         self.get_response = get_response
@@ -21,7 +23,6 @@ class CustomAuthentication:
            return JsonResponse({"message" :"Credentials Not Found ..Please Login"},status=status.HTTP_403_FORBIDDEN)
         try : 
             payload = jwt.decode(token,settings.SECRET_KEY,algorithms=['HS256'])
-            # print(payload)
             user = User.objects.filter(email=payload["email"]).first()
             request.thisUser = user
             response = self.get_response(request)

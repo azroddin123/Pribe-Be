@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-from .models import Inquiry
-from cars.models import TestDrive
+from .models import Inquiry,TestDrive
+
 
 class InquirySerializer(ModelSerializer):
     class Meta :

@@ -19,13 +19,13 @@ class UserApi(GenericMethodsMixin,APIView):
 
 class UserProfileAPI(APIView):
     def get(self,request,*args,**kwargs):
-        try :
+        # try :
             user_data = User.objects.get(id=request.thisUser.id)
             if user_data : 
                 serializer = UserSerializer2(user_data)
             return Response({"error" : False, "data" : serializer.data},status=status.HTTP_200_OK)
-        except Exception as e :
-            return Response({"error" : True , "message" : str(e)},status=status.HTTP_400_BAD_REQUEST)
+        # except Exception as e :
+        #     return Response({"error" : True , "message" : str(e)},status=status.HTTP_400_BAD_REQUEST)
 
 from django.db import transaction
 from portals.email_utility import send_email_async

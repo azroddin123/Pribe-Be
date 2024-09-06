@@ -63,14 +63,6 @@ class Review(BaseModel):
     image       = models.ImageField(upload_to="upload_to",null=True,blank=True)
     rating      = models.PositiveIntegerField(default=0)
 
-class TestDrive(BaseModel):
-    car         = models.ForeignKey(Car,related_name="test_drive",on_delete=models.CASCADE,null=True,blank=True)
-    user        = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
-    date        = models.DateField()
-    start_time  = models.CharField(max_length=128,null=True,blank=True)
-    end_time    = models.CharField(max_length=128,null=True,blank=True)
-    is_approved = models.BooleanField(default=False)
-
 class Enquiry(BaseModel):
     first_name       = models.CharField(max_length=255,null=True,blank=True)
     last_name        = models.CharField(max_length=255,null=True,blank=True)

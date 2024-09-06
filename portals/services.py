@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
+
 def generate_token(email):
     payload = {
         "email" :email

@@ -1,4 +1,4 @@
-from .models import Car,Brand,CarImage,Review,TestDrive,Enquiry
+from .models import Car,Brand,CarImage,Review,Enquiry
 from rest_framework.serializers import ModelSerializer
 
 from rest_framework import serializers
@@ -65,11 +65,6 @@ class CarDetailSerializer(ModelSerializer):
             return obj.car_model.name
         return None
 
-
-class TDSerializer(ModelSerializer):
-    class Meta :
-        model = TestDrive
-        fields ="__all__"
     
 class EnquirySerializer(ModelSerializer):
     class Meta :
