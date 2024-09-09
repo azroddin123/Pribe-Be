@@ -22,6 +22,7 @@ class Car(BaseModel):
     
     body_structure_damage = models.CharField(max_length=128,null=True,blank=True)
     flooded_body          = models.CharField(max_length=128,null=True,blank=True)
+    rto_location          = models.CharField(max_length=128,null=True,blank=True)
     
     price               = models.DecimalField(max_digits=10, decimal_places=2,null=True,blank=True)
     ownership           = models.CharField(max_length=128,null=True,blank=True)
@@ -49,6 +50,7 @@ class Car(BaseModel):
     seller_name         = models.CharField(max_length=128,null=True,blank=True)
     contact_no          = models.CharField(max_length=128,null=True,blank=True)
     location            = models.CharField(max_length=128,null=True,blank=True)
+    is_approved         = models.BooleanField(default=False)
 
 class CarImage(BaseModel):
     car               = models.ForeignKey(Car,related_name="car_image",on_delete=models.CASCADE)

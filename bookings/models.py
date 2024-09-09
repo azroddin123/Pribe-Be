@@ -13,6 +13,7 @@ class Inquiry(BaseModel):
     vehicle_name = models.CharField(max_length=128,null=True,blank=True)
     inquiry_type = models.CharField(max_length=128,null=True,blank=True)
     message      = models.TextField(null=True,blank=True)
+    is_approved         = models.BooleanField(default=False)
     
 
 class TestDrive(BaseModel):
@@ -24,3 +25,7 @@ class TestDrive(BaseModel):
     time               = models.CharField(max_length=128,null=True,blank=True)
     car_model          = models.CharField(max_length=128,null=True,blank=True)
     preferred_location = models.CharField(max_length=128,null=True,blank=True)
+    is_approved        = models.BooleanField(default=False)
+    notes              = models.TextField(null=True,blank=True)
+    
+    
