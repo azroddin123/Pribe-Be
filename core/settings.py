@@ -69,7 +69,8 @@ INSTALLED_APPS = [
     'accounts',
     'portals',
     'cars',
-    'bookings'
+    'bookings',
+    'PrideAdmin'
 ]
 
 MIDDLEWARE = [

@@ -5,7 +5,7 @@ from rest_framework import serializers
 
 class BrandSerializer(ModelSerializer):
     class Meta :
-        model = Brand
+        model  = Brand
         fields = "__all__"
 
 class CarSerializer(ModelSerializer):
@@ -18,7 +18,6 @@ class CarImageSerializer(ModelSerializer):
         model = CarImage
         fields = "__all__"
         
-
 class ReviewSerializer(ModelSerializer):
     class Meta :
         model = Review
@@ -26,7 +25,6 @@ class ReviewSerializer(ModelSerializer):
         
 class ReviewSerializer1(serializers.ModelSerializer):
     user = serializers.SerializerMethodField(read_only=True)
-
     class Meta:
         model = Review
         fields = ['user', 'name', 'email', 'review_text', 'image', 'rating']
@@ -38,22 +36,22 @@ class ReviewSerializer1(serializers.ModelSerializer):
 
 class CarSerializer1(ModelSerializer):
     class Meta :
-        model = Car
+        model  = Car
         fields = ["car_title","car_model","price","fuel_type","km_driven","image"]
 
 class CarSerializer2(ModelSerializer):
     class Meta :
-        model = Car
+        model  = Car
         fields = ['id','user',"make", "car_model", "mileage", "price", "year", "rto_location", "variant", "ownership", "km_driven"]    
 
 class CarDetailSerializer(ModelSerializer):
-    reviews   = ReviewSerializer1(many=True, read_only=True)
-    car_image = CarImageSerializer(many=True,read_only=True)
-    user      = serializers.SerializerMethodField(read_only=True)
-    car_model = serializers.SerializerMethodField(read_only=True)
+    reviews    = ReviewSerializer1(many=True, read_only=True)
+    car_image  = CarImageSerializer(many=True,read_only=True)
+    user       = serializers.SerializerMethodField(read_only=True)
+    car_model  = serializers.SerializerMethodField(read_only=True)
     class Meta :
-        model = Car 
-        fields = ['id','user', 'make', 'car_title', 'car_model', 'variant', 'vin', 'mileage', 'make_year', 'price', 'ownership', 'rto_location', 'insurance', 'insurance_validity', 'fuel_type', 'engine_capacity', 'transmission', 'condition', 'key_features', 'convenience_feature', 'km_driven', 'registry_year', 'registration_number', 'description', 'color', 'image', 'status', 'location', 'seller_name', 'contact_no', 'car_image','reviews']
+        model  = Car 
+        fields = ['id','user', 'make', 'car_title', 'car_model', 'variant', 'vin', 'mileage', 'make_year', 'price', 'ownership', 'rto_location', 'insurance', 'insurance_validity', 'fuel_type', 'engine_capacity', 'transmission', 'condition', 'key_features', 'convenience_feature', 'km_driven', 'registry_year', 'registration_number', 'description', 'color', 'image', 'status', 'location', 'seller_name', 'contact_no', 'car_image','reviews','warranty']
     
     def get_user(self,obj):
         if obj.user : 
@@ -65,10 +63,9 @@ class CarDetailSerializer(ModelSerializer):
             return obj.car_model.name
         return None
 
-    
 class EnquirySerializer(ModelSerializer):
     class Meta :
-        model = Enquiry
+        model  = Enquiry
         fields = "__all__"
 
 

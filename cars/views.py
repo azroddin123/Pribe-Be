@@ -22,12 +22,15 @@ class CarAPI(GenericMethodsMixin,APIView):
     def post(self,request,*args,**kwargs):
         with transaction.atomic():
             try : 
+                print(request.data,"--------------------")
                 uploaded_images = request.FILES.getlist("car_images")
+                print(uploaded_images,"----------------------------")
                 serializer = CarSerializer(data=request.data)
                 if serializer.is_valid():
                     car = serializer.save()
-                    car_image_list = [CarImage(car_image=item,car=car) for item in uploaded_images]
-                    CarImage.objects.bulk_create(car_image_list)
+                    if car_image_list is not None : 
+                        car_image_list = [CarImage(car_image=item,car=car) for item in uploaded_images]
+                        CarImage.objects.bulk_create(car_image_list)
                     return Response({"error" : False, "data" : serializer.data},status=status.HTTP_201_CREATED)
                 return Response({"error" : True , "errors" : serializer.errors},status=status.HTTP_400_BAD_REQUEST)
             except Exception as e :
@@ -60,6 +63,7 @@ class AddCarAPI(GenericMethodsMixin,APIView):
         with transaction.atomic():
             try : 
                 uploaded_images = request.FILES.getlist("car_images")
+                print("uploaded_images",uploaded_images)
                 serializer = CarSerializer2(data=request.data)
                 if serializer.is_valid():
                     car = serializer.save()
@@ -69,8 +73,6 @@ class AddCarAPI(GenericMethodsMixin,APIView):
                 return Response({"error" : True , "errors" : serializer.errors},status=status.HTTP_400_BAD_REQUEST)
             except Exception as e :
                 return Response({"error" : True , "message" : str(e)},status=status.HTTP_400_BAD_REQUEST)
-
-
     
 class CarImagesAPI(GenericMethodsMixin,APIView):
     model = CarImage

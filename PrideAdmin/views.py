@@ -37,10 +37,6 @@ class TestDriveAPI(GenericMethodsMixin,APIView):
     serializer_class = TestDriveSerializer
     lookup_field     =  "id"
 
-class ReviewAPI(GenericMethodsMixin,APIView):
-    model            = Review
-    serializer_class = ReviewSerializer
-    lookup_field     = "id"
 
 class EnquiryAPI(GenericMethodsMixin,APIView):
     model            = Enquiry
@@ -51,3 +47,13 @@ class CarImagesAPI(GenericMethodsMixin,APIView):
     model            = CarImage
     serializer_class = CarImageSerializer
     lookup_field     = "id"
+    
+class ReviewsAPI(GenericMethodsMixin,APIView):
+    model = Review
+    serializer_class = ReviewSerializer
+    lookup_field = "id"
+
+class CarDetailsAPI(GenericMethodsMixin,APIView):
+    model = Car
+    serializer_class = CarDetailSerializer
+    lookup_field = "id"
