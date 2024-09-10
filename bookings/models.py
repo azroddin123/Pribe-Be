@@ -15,7 +15,6 @@ class Inquiry(BaseModel):
     message      = models.TextField(null=True,blank=True)
     is_approved         = models.BooleanField(default=False)
     
-
 class TestDrive(BaseModel):
     user               = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     car                = models.ForeignKey(Car,related_name="test_drive",on_delete=models.CASCADE,null=True,blank=True)

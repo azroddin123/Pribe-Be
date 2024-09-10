@@ -128,13 +128,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+import pymysql
+pymysql.install_as_MySQLdb()
 
+DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.mysql',
+		'NAME': 'pride_db',
+		'USER': 'root',
+		'PASSWORD': 'password',
+		'HOST':'localhost',
+		'PORT':'3306',
+	}
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
