@@ -50,7 +50,7 @@ class CarDetailSerializer(ModelSerializer):
     user       = serializers.SerializerMethodField(read_only=True)
     class Meta :
         model  = Car 
-        fields = ['id','user', 'make', 'car_title', 'car_model', 'variant', 'vin', 'mileage', 'make_year', 'price', 'ownership', 'rto_location', 'insurance', 'insurance_validity', 'fuel_type', 'engine_capacity', 'transmission', 'condition', 'key_features', 'convenience_feature', 'km_driven', 'registry_year', 'registration_number', 'description', 'color', 'image', 'status', 'location', 'seller_name', 'contact_no', 'car_image','reviews','warranty','body_structure_damage','flooded_body','registration_location']
+        fields = ['id','user', 'make', 'car_title', 'car_model', 'variant', 'vin', 'mileage', 'make_year', 'price', 'ownership', 'rto_location', 'insurance', 'insurance_validity', 'fuel_type', 'engine_capacity', 'transmission', 'condition', 'key_features', 'convenience_feature', 'km_driven', 'registry_year', 'registration_number', 'description', 'color', 'image', 'status', 'location', 'seller_name', 'contact_no', 'car_image','reviews','warranty','body_structure_damage','flooded_body','registration_location','is_approved']
     
     def get_user(self,obj):
         if obj.user : 
