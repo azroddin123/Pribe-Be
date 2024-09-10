@@ -57,3 +57,5 @@ class CarDetailsAPI(GenericMethodsMixin,APIView):
     model = Car
     serializer_class = CarDetailSerializer
     lookup_field = "id"
+
+

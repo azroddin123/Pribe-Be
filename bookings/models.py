@@ -29,3 +29,9 @@ class TestDrive(BaseModel):
     notes              = models.TextField(null=True,blank=True)
     
     
+class ContactUs(BaseModel):
+    name         = models.CharField(max_length=128,null=True,blank=True)
+    email        = models.CharField(max_length=128,null=True,blank=True)
+    phone        = models.CharField(max_length=128,null=True,blank=True)
+    location     = models.CharField(max_length=128,null=True,blank=True)
+    message      = models.TextField(null=True,blank=True)
