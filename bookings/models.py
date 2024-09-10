@@ -21,6 +21,7 @@ class TestDrive(BaseModel):
     car                = models.ForeignKey(Car,related_name="test_drive",on_delete=models.CASCADE,null=True,blank=True)
     full_name          = models.CharField(max_length=128,null=True,blank=True)
     email_address      = models.CharField(max_length=128,null=True,blank=True)
+    phone_number       = models.CharField(max_length=128,null=True,blank=True)
     date               = models.DateField(null=True,blank=True)
     time               = models.CharField(max_length=128,null=True,blank=True)
     car_model          = models.CharField(max_length=128,null=True,blank=True)
