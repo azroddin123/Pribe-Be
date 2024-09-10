@@ -34,9 +34,9 @@ class Car(BaseModel):
     engine_capacity       = models.CharField(max_length=128,null=True,blank=True)
     transmission          = models.CharField(max_length=128,null=True,blank=True)
     
-    condition             = models.TextField(max_length=128,null=True,blank=True)
-    key_features          = models.TextField(max_length=128,null=True,blank=True)
-    convenience_feature   = models.TextField(max_length=128,null=True,blank=True)
+    condition             = models.TextField(null=True,blank=True)
+    key_features          = models.TextField(null=True,blank=True)
+    convenience_feature   = models.TextField(null=True,blank=True)
     km_driven             = models.PositiveIntegerField(null=True,blank=True)
     registry_year         = models.PositiveIntegerField(null=True,blank=True)
     registration_number   = models.CharField(max_length=12,null=True,blank=True)
