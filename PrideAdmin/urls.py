@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import * 
 from accounts.views import UserApi
+from cars.views import SellingCarAPI
 urlpatterns = [
     
 path('user',UserApi.as_view()),
@@ -23,5 +24,8 @@ path('car-detail1/<str:pk>',CarDetailsAPI.as_view()),
 
 path('enquiry',EnquiryAPI.as_view()),
 path('enquiry/<str:pk>',EnquiryAPI.as_view()),
+
+path('selling-request',SellingCarAPI.as_view()),
+path('selling-request/<str:pk>',SellingCarAPI.as_view())
 
 ]

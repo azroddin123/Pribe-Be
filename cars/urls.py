@@ -19,7 +19,10 @@ path('review/<str:pk>',ReviewsAPI.as_view()),
 path('car-detail1',CarDetailsAPI.as_view()),
 path('car-detail1/<str:pk>',CarDetailsAPI.as_view()),
 
-
 path('enquiry',EnquiryAPI.as_view()),
 path('enquiry/<str:pk>',EnquiryAPI.as_view()),
+
+path('selling-request',SellingCarAPI.as_view()),
+path('selling-request/<str:pk>',SellingCarAPI.as_view())
+
 ]
