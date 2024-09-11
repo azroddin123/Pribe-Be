@@ -23,7 +23,7 @@ class CarAPI(GenericMethodsMixin,APIView):
     def get(self,request,pk=None,*args,**kwargs):
         try : 
            if pk in ["0", None]:
-               data = Car.objects.all()
+               data = Car.objects.filter(is_approved=True).order_by('created_on')
                response = paginate_data(Car, CarDetailSerializer, request,data)
                return Response(response,status=status.HTTP_200_OK)
            else : 
@@ -32,8 +32,6 @@ class CarAPI(GenericMethodsMixin,APIView):
                return Response({"error" : False,"data" : serializer.data},status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error" : True , "message" : str(e) , "status_code" : 400},status=status.HTTP_400_BAD_REQUEST,)
-    
-        
 
     def post(self,request,*args,**kwargs):
         with transaction.atomic():
