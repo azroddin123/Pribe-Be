@@ -2,7 +2,7 @@ from django.urls import path
 from .views import * 
 from accounts.views import UserApi
 from cars.views import SellingCarAPI
-from bookings.views import ContactAPI
+from bookings.views import ContactAPI,TestDriveAPI,InquiryAPI
 
 urlpatterns = [
     
@@ -34,6 +34,13 @@ path('contact',ContactAPI.as_view()),
 path('contact/<str:pk>',ContactAPI.as_view()),
 
 path('blog',AdminBlogAPI.as_view()),
-path('blog/<str:pk>',AdminBlogAPI.as_view())
+path('blog/<str:pk>',AdminBlogAPI.as_view()),
+
+
+# path('inquiry',InquiryAPI.as_view()),
+# path('inquiry/<str:pk>',InquiryAPI.as_view()),
+
+path('test-drive',TestDriveAPI.as_view()),
+path('test-drive/<str:pk>',TestDriveAPI.as_view()),
 
 ]

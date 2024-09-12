@@ -17,6 +17,7 @@ from rest_framework.views import APIView
 from portals.GM2 import GenericMethodsMixin
 from portals.services import paginate_data
 
+from django.db import transaction
 
 class UserAPI(GenericMethodsMixin,APIView):
     model            = User
@@ -41,6 +42,25 @@ class CarAPI(GenericMethodsMixin,APIView):
         except Exception as e:
             return Response({"error" : True , "message" : str(e) , "status_code" : 400},status=status.HTTP_400_BAD_REQUEST,)
 
+
+    def post(self,request,*args,**kwargs):
+        with transaction.atomic():
+            try : 
+                print(request.data,"--------------------")
+                uploaded_images = request.FILES.getlist("car_images")
+                print(uploaded_images,"----------------------------")
+                serializer = CarSerializer(data=request.data)
+                if serializer.is_valid():
+                    car = serializer.save()
+                    if uploaded_images is not None: 
+                        print(car.id,"--------------")
+                        car_image_list = [CarImage(car_image=item,car=car) for item in uploaded_images]
+                        CarImage.objects.bulk_create(car_image_list)
+                    return Response({"error" : False, "data" : serializer.data},status=status.HTTP_201_CREATED)
+                return Response({"error" : True , "errors" : serializer.errors},status=status.HTTP_400_BAD_REQUEST)
+            except Exception as e :
+                return Response({"error" : True , "message" : str(e)},status=status.HTTP_400_BAD_REQUEST)
+    
 class BrandAPI(GenericMethodsMixin,APIView):
     model            = Brand
     serializer_class = BrandSerializer
