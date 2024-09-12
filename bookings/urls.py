@@ -3,8 +3,8 @@ from .views import InquiryAPI,TestDriveAPI,ContactAPI
 
 
 urlpatterns = [
-    path('inquiry',InquiryAPI.as_view()),
-    path('inquiry/<str:pk>',InquiryAPI.as_view()),
+    path('enquiry',InquiryAPI.as_view()),
+    path('enquiry/<str:pk>',InquiryAPI.as_view()),
     
     path('test-drive',TestDriveAPI.as_view()),
     path('test-drive/<str:pk>',TestDriveAPI.as_view()),
