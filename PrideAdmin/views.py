@@ -90,7 +90,6 @@ class TestDriveAPI(GenericMethodsMixin,APIView):
     serializer_class = TestDriveSerializer
     lookup_field     =  "id"
 
-
 class EnquiryAPI(GenericMethodsMixin,APIView):
     model            = Enquiry
     serializer_class = EnquirySerializer
