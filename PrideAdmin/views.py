@@ -73,3 +73,7 @@ class CarDetailsAPI(GenericMethodsMixin,APIView):
     lookup_field = "id"
 
 
+class AdminBlogAPI(GenericMethodsMixin,APIView):
+    model = Blog
+    serializer_class = BlogSerializer
+    lookup_field = "id"

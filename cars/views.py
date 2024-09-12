@@ -5,8 +5,8 @@ from portals.GM2 import GenericMethodsMixin
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
-from .models import Car,Brand,CarImage,Review,Enquiry
-from .serializers import (CarSerializer,BrandSerializer,CarImageSerializer,ReviewSerializer,CarDetailSerializer,EnquirySerializer,CarSerializer1,CarSerializer2)
+from .models import Car,Brand,CarImage,Review,Enquiry,Blog
+from .serializers import (CarSerializer,BrandSerializer,CarImageSerializer,ReviewSerializer,CarDetailSerializer,EnquirySerializer,CarSerializer1,CarSerializer2,BlogSerializer)
 from django.db import transaction
 from portals.services import paginate_data,paginate_model_data
 
@@ -105,7 +105,6 @@ class CarDetailsAPI(GenericMethodsMixin,APIView):
     serializer_class = CarDetailSerializer
     lookup_field = "id"
 
-
 class SellingCarAPI(GenericMethodsMixin,APIView):
     model  =  Car 
     serializer_class = CarSerializer
@@ -124,10 +123,25 @@ class SellingCarAPI(GenericMethodsMixin,APIView):
         except Exception as e:
             return Response({"error" : True , "message" : str(e) , "status_code" : 400},status=status.HTTP_400_BAD_REQUEST,)
     
-        
-        
 class EnquiryAPI(GenericMethodsMixin,APIView):
     model = Enquiry
     serializer_class = EnquirySerializer
     lookup_field = "id"
+
+class BlogAPI(GenericMethodsMixin,APIView):
+    model = Blog
+    serializer_class = BlogSerializer
+    lookup_field = "id"
     
+    def get(self,request,pk=None,*args,**kwargs):
+        try : 
+           if pk in ["0", None]:
+               data = Blog.objects.filter(is_published=True).order_by('created_on')
+               response = paginate_data(Blog, BlogSerializer, request,data)
+               return Response(response,status=status.HTTP_200_OK)
+           else : 
+               data = Blog.objects.get(id=pk)
+               serializer = BlogSerializer(data)
+               return Response({"error" : False,"data" : serializer.data},status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error" : True , "message" : str(e) , "status_code" : 400},status=status.HTTP_400_BAD_REQUEST,)

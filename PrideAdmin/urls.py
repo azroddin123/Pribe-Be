@@ -31,6 +31,9 @@ path('selling-request',SellingCarAPI.as_view()),
 path('selling-request/<str:pk>',SellingCarAPI.as_view()),
 
 path('contact',ContactAPI.as_view()),
-path('contact/<str:pk>',ContactAPI.as_view())
+path('contact/<str:pk>',ContactAPI.as_view()),
+
+path('blog',AdminBlogAPI.as_view()),
+path('blog/<str:pk>',AdminBlogAPI.as_view())
 
 ]

@@ -1,4 +1,4 @@
-from .models import Car,Brand,CarImage,Review,Enquiry
+from .models import Car,Brand,CarImage,Review,Enquiry,Blog
 from rest_framework.serializers import ModelSerializer
 
 from rest_framework import serializers
@@ -67,4 +67,7 @@ class EnquirySerializer(ModelSerializer):
         model  = Enquiry
         fields = "__all__"
 
-
+class BlogSerializer(ModelSerializer):
+    class Meta :
+        model = Blog
+        fields = "__all__"

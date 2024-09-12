@@ -75,3 +75,15 @@ class Enquiry(BaseModel):
     inquiry_type     = models.CharField(max_length=255,null=True,blank=True)
     message          = models.TextField(null=True,blank=True)
     
+from django.utils import timezone
+
+class Blog(BaseModel):
+    title          = models.CharField(max_length=255)
+    slug           = models.CharField(max_length=255, unique=True)
+    author         = models.CharField(max_length=255,null=True,blank=True)
+    content        = models.TextField()
+    blog_summary   = models.TextField(null=True, blank=True)
+    image          = models.ImageField(upload_to='blog_images/', null=True, blank=True)
+    published_date = models.DateTimeField(default=timezone.now)
+    updated_date   = models.DateTimeField(auto_now=True)
+    is_published   = models.BooleanField(default=False)
