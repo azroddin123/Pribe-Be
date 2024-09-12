@@ -42,7 +42,7 @@ class CarAPI(GenericMethodsMixin,APIView):
                 serializer = CarSerializer(data=request.data)
                 if serializer.is_valid():
                     car = serializer.save()
-                    if uploaded_images is not None: 
+                    if uploaded_images: 
                         print(car.id,"--------------")
                         car_image_list = [CarImage(car_image=item,car=car) for item in uploaded_images]
                         CarImage.objects.bulk_create(car_image_list)

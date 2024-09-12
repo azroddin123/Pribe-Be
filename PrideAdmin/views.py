@@ -32,7 +32,7 @@ class CarAPI(GenericMethodsMixin,APIView):
     def get(self,request,pk=None,*args,**kwargs):
         try : 
            if pk in ["0", None]:
-               data = Car.objects.filter(is_approved=True).order_by('created_on')
+               data = Car.objects.filter(is_approved=True)
                response = paginate_data(Car, CarDetailSerializer, request,data)
                return Response(response,status=status.HTTP_200_OK)
            else : 
@@ -52,7 +52,7 @@ class CarAPI(GenericMethodsMixin,APIView):
                 serializer = CarSerializer(data=request.data)
                 if serializer.is_valid():
                     car = serializer.save()
-                    if uploaded_images is not None: 
+                    if uploaded_images: 
                         print(car.id,"--------------")
                         car_image_list = [CarImage(car_image=item,car=car) for item in uploaded_images]
                         CarImage.objects.bulk_create(car_image_list)
