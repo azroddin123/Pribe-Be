@@ -60,7 +60,7 @@ class CarAPI(GenericMethodsMixin,APIView):
                 serializer = CarSerializer(obj,data=request.data,partial=True)
                 if serializer.is_valid():
                     car = serializer.save()
-                    if not uploaded_images:
+                    if uploaded_images:
                         CarImage.objects.filter(car=pk).delete()
                         car_image_list = [CarImage(car_image=item,car=car) for item in uploaded_images]
                         CarImage.objects.bulk_create(car_image_list)

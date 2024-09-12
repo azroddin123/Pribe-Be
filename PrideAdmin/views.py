@@ -61,6 +61,25 @@ class CarAPI(GenericMethodsMixin,APIView):
             except Exception as e :
                 return Response({"error" : True , "message" : str(e)},status=status.HTTP_400_BAD_REQUEST)
     
+    def put(self,request,pk = None,*args,**kwargs):
+        with transaction.atomic():
+            try : 
+                obj = Car.objects.get(id=pk)
+                print(request.data)
+                uploaded_images = request.FILES.getlist("car_images")
+                serializer = CarSerializer(obj,data=request.data,partial=True)
+                if serializer.is_valid():
+                    car = serializer.save()
+                    if uploaded_images:
+                        CarImage.objects.filter(car=pk).delete()
+                        car_image_list = [CarImage(car_image=item,car=car) for item in uploaded_images]
+                        CarImage.objects.bulk_create(car_image_list)
+                    return Response({"error" : False, "data" : serializer.data},status=status.HTTP_202_ACCEPTED)
+                return Response({"error" : True , "errors" : serializer.errors},status=status.HTTP_400_BAD_REQUEST)
+            except Exception as e :
+                return Response({"error" : True , "message" : str(e)},status=status.HTTP_400_BAD_REQUEST)
+
+
 class BrandAPI(GenericMethodsMixin,APIView):
     model            = Brand
     serializer_class = BrandSerializer
