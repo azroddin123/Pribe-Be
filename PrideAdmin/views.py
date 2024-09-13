@@ -79,7 +79,6 @@ class CarAPI(GenericMethodsMixin,APIView):
             except Exception as e :
                 return Response({"error" : True , "message" : str(e)},status=status.HTTP_400_BAD_REQUEST)
 
-
 class BrandAPI(GenericMethodsMixin,APIView):
     model            = Brand
     serializer_class = BrandSerializer

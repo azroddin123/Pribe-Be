@@ -15,6 +15,7 @@ class Car(BaseModel):
     make                  = models.CharField(max_length=128,null=True,blank=True)
     car_title             = models.CharField(max_length=128,null=True,blank=True)
     car_model             = models.CharField(max_length=128,null=True,blank=True)
+    car_type              = models.CharField(max_length=128,blank=True,null=True)
     variant               = models.CharField(max_length=128,null=True,blank=True)
     vin                   = models.CharField(max_length=128,null=True,blank=True)
     mileage               = models.DecimalField(max_digits=10, decimal_places=2,null=True,blank=True)
@@ -52,8 +53,6 @@ class Car(BaseModel):
     location              = models.CharField(max_length=128,null=True,blank=True)
     is_approved           = models.BooleanField(default=False)
     
-    
-
 class CarImage(BaseModel):
     car               = models.ForeignKey(Car,related_name="car_image",on_delete=models.CASCADE)
     car_image         = models.ImageField(upload_to="car_images")
