@@ -14,7 +14,7 @@ class CustomAuthentication:
 
     def __call__(self, request):
         
-        if request.path.startswith("/admin/") or request.path.endswith("nt/") or request.path.startswith("/cars/review") or request.path.startswith("/media") or request.path.startswith("/booking/enquiry") or request.path.startswith("/cars/car-detail") or request.path.startswith("/static") or request.path.startswith("/booking/contact") or request.path.startswith("/booking/blog") or request.path.startswith("/cars/blog"):
+        if request.path.startswith("/admin/") or request.path.endswith("nt/") or request.path.startswith("/cars/review") or request.path.startswith("/media") or request.path.startswith("/booking/enquiry") or request.path.startswith("/cars/car-detail") or request.path.startswith("/static") or request.path.startswith("/booking/contact") or request.path.startswith("/booking/blog") or request.path.startswith("/cars/blog") or request.path.startswith("/cars/car-filter") or request.path.startswith("/cars/car-filter1"):
             request.thisUser = None
             response = self.get_response(request)
             return response
@@ -31,7 +31,6 @@ class CustomAuthentication:
             return JsonResponse({"message": str(e)}, status=status.HTTP_403_FORBIDDEN)
 
         
-
 
 
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from portals.GM2 import GenericMethodsMixin
-
+from django.db.models import Q
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
@@ -145,3 +145,55 @@ class BlogAPI(GenericMethodsMixin,APIView):
                return Response({"error" : False,"data" : serializer.data},status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error" : True , "message" : str(e) , "status_code" : 400},status=status.HTTP_400_BAD_REQUEST,)
+
+
+
+class CarFilterAPI(APIView):
+    def get(self,request,*args,**kwargs):
+        filter_data = request.data.get('filters', {})
+        min_price = request.data.get('min_price', None)  # Get minimum price if provided
+        max_price = request.data.get('max_price', None)  # Get maximum price if provided
+        
+        print(filter_data,"====================")
+        
+        try:
+            cars = Car.objects.filter(**filter_data)
+            print(len(cars))
+            if min_price is not None and max_price is not None:
+                cars = cars.filter(price__gte=min_price, price__lte=max_price)
+            elif min_price is not None:
+                cars = cars.filter(price__gte=min_price)
+            elif max_price is not None:
+                cars = cars.filter(price__lte=max_price)
+                
+            response = paginate_data(Car, CarDetailSerializer, request,cars)
+            return Response(response,status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error" : True , "message" : str(e) , "status_code" : 400},status=status.HTTP_400_BAD_REQUEST,)
+
+
+
+
+class CarFilterByPriceAndTypeView(APIView):
+    def get(self, request, *args, **kwargs):
+        try : 
+            # Extract query parameters with defaults as None
+            min_price = request.query_params.get('min_price')
+            max_price = request.query_params.get('max_price')
+            car_type = request.query_params.get('car_type')
+            query = Q()
+            if car_type:
+                query &= Q(car_type=car_type)
+            try:
+                if min_price is not None:
+                    query &= Q(price__gte=float(min_price))
+                if max_price is not None:
+                    query &= Q(price__lte=float(max_price))
+            except ValueError:
+                return Response({"error": "Invalid price values"}, status=status.HTTP_400_BAD_REQUEST)
+            data = Car.objects.filter(query)
+            response = paginate_data(Car, CarDetailSerializer, request,data)
+            return Response(response,status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error" : True , "message" : str(e) , "status_code" : 400},status=status.HTTP_400_BAD_REQUEST,)
+

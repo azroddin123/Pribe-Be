@@ -25,6 +25,8 @@ path('selling-request',SellingCarAPI.as_view()),
 path('selling-request/<str:pk>',SellingCarAPI.as_view()),
 
 path('blog',BlogAPI.as_view()),
-path('blog/<str:pk>',BlogAPI.as_view())
+path('blog/<str:pk>',BlogAPI.as_view()),
 
+path('car-filter',CarFilterAPI.as_view()),
+path('car-filter1',CarFilterByPriceAndTypeView.as_view())
 ]
