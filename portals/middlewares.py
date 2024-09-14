@@ -14,7 +14,7 @@ class CustomAuthentication:
 
     def __call__(self, request):
     
-        if request.path.startswith("/admin/") or request.path.endswith("nt/") or request.path.startswith("/media") or request.path.startswith("/customer/") or request.path.startswith("/appointment/") or request.path.startswith("/static"):
+        if request.path.startswith("/admin/") or request.path.endswith("nt/") or request.path.startswith("/media") or request.path.startswith("/booking/enquiry") or request.path.startswith("/cars/car-detail") or request.path.startswith("/static"):
             request.thisUser = None
             response = self.get_response(request)
             return response
